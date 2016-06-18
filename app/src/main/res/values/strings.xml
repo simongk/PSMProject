@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string-array name="dnitygodnia">
+        <item>Pon</item>
+        <item>Wto</item>
+        <item>Śr</item>
+        <item>Czw</item>
+        <item>Pt</item>
+    </string-array>
+
+    <string-array name="godziny">
+        <item>7:30-9:00</item>
+        <item>9:15-10:45</item>
+        <item>11:00-12:30</item>
+        <item>12:45-14:15</item>
+        <item>14:30-16:00</item>
+    </string-array>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

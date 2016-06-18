@@ -22,12 +22,12 @@
         android:layout_toLeftOf="@+id/btnAddItem"
         android:layout_toStartOf="@+id/btnAddItem"
         android:layout_alignParentBottom="true"
-        android:hint="Tresc..." />
+        android:hint="Treść..." />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dodaj notatke"
+        android:text="Dodaj notatkę"
         android:id="@+id/btnAddItem"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

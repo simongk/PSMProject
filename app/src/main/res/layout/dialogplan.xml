@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="match_parent">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/rg">
+
+        <RadioButton
+            android:text="Projekt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioP"
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/editText"
+            android:layout_marginEnd="21dp"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="Laboratorium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioL"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="Wykład"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioW"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1" />
+    </RadioGroup>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerDniowy"
+        android:layout_below="@+id/spinnerGodzinowy"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="PSM"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_below="@+id/spinnerDniowy"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp" />
+
+    <Button
+        android:text="Dodaj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_below="@+id/editText"
+        android:layout_alignStart="@+id/editText" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerGodzinowy"
+        android:layout_below="@+id/rg"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

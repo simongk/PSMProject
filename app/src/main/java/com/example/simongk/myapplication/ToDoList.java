@@ -1,12 +1,15 @@
 package com.example.simongk.myapplication;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -50,14 +53,35 @@ public class ToDoList extends Activity {
         writeItems();
     }
 
+
+
     private void setupListViewListener(){
         lvItems.setOnItemLongClickListener( new AdapterView.OnItemLongClickListener() {
 
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                items.remove(position);
-                itemsAdapter.notifyDataSetChanged();
-                writeItems();
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                Dialog dialog = new Dialog(ToDoList.this);
+                dialog.setCancelable(true);
+                dialog.setContentView(R.layout.cozrobic);
+                dialog.setTitle("Co zrobić?");
+                final Button b1 = (Button) dialog.findViewById(R.id.button);
+                b1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        items.remove(position);
+                        itemsAdapter.notifyDataSetChanged();
+                        writeItems();
+                    }
+                });
+                final Button b2 = (Button) dialog.findViewById(R.id.button2);
+                b2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(ToDoList.this,RememberYourDate.class));
+                    }
+                });
+                dialog.show();
+
                 return true;
             }
         });

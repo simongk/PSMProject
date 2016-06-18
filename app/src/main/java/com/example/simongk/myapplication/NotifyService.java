@@ -53,17 +53,17 @@ public class NotifyService extends Service {
     }
     private void showNotification() {
         // This is the 'title' of the notification
-        CharSequence title = "Masz cos do zrobienia!";
+        CharSequence title = "Masz coś do zrobienia!";
         // This is the icon to use on the notification
         int icon = R.drawable.ic_dialog_alert;
         // This is the scrolling text of the notification
-        CharSequence text = "Sprawdz liste notatek.";
+        CharSequence text = "Sprawdź listę notatek.";
         // What time to show on the notification
         long time = System.currentTimeMillis();
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, SecondActivity.class), 0);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, ToDoList.class), 0);
 
         Notification.Builder notification = new Notification.Builder(this);
-        notification.setAutoCancel(false);
+        notification.setAutoCancel(true);
         notification.setContentTitle(title);
         notification.setSmallIcon(icon);
         notification.setContentText(text);
