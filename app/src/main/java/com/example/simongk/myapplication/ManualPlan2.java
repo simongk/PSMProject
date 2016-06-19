@@ -9,9 +9,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.provider.ContactsContract;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,6 +37,8 @@ public class ManualPlan2 extends AppCompatActivity {
     Button stworzBaze,pokazPlan;
     TextView sp,sw,ss,sc,spt,dp,dw,ds,dc,dpt,jp,jw,js,jc,jpt,dwp,dww,dws,dwc,dwpt,cp,cw,cs,cc,cpt;
 
+    private GestureDetectorCompat mDetector;
+
 
     public String dialogoweButtony(){
         EditText nazwa = (EditText) dialog.findViewById(R.id.editText);
@@ -46,12 +51,18 @@ public class ManualPlan2 extends AppCompatActivity {
         return t01;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ManualPlan2.this,MainMenu.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manualplan2);
         createDatabase();
+        mDetector = new GestureDetectorCompat(this,new MyGestureListener());
 
 
         sp = (TextView) findViewById(R.id.sp);
@@ -84,10 +95,11 @@ public class ManualPlan2 extends AppCompatActivity {
         dwpt = (TextView) findViewById(R.id.dwpt);
         cpt  = (TextView) findViewById(R.id.cpt);
 
-        pokazPlan = (Button) findViewById(R.id.pokazPlan);
+        //pokazPlan = (Button) findViewById(R.id.pokazPlan);
 
 
         Button b1 = (Button) findViewById(R.id.showd);
+        getDatabase();
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,30 +132,35 @@ public class ManualPlan2 extends AppCompatActivity {
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (0,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "9:15-10:45":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (1,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "11:00-12:30":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (2,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "12:45-14:15":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (3,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "14:30-16:00":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (4,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
                                     }
                                     break;
@@ -154,30 +171,35 @@ public class ManualPlan2 extends AppCompatActivity {
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (5,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "9:15-10:45":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (6,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "11:00-12:30":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (7,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "12:45-14:15":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (8,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "14:30-16:00":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (9,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
                                     }
                                     break;
@@ -188,30 +210,35 @@ public class ManualPlan2 extends AppCompatActivity {
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (10,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "9:15-10:45":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (11,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "11:00-12:30":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (12,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "12:45-14:15":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (13,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "14:30-16:00":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (14,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
                                     }
                                     break;
@@ -222,30 +249,35 @@ public class ManualPlan2 extends AppCompatActivity {
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (15,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "9:15-10:45":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (16,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "11:00-12:30":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (17,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "12:45-14:15":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (18,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "14:30-16:00":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (19,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
                                     }
                                     break;
@@ -256,30 +288,35 @@ public class ManualPlan2 extends AppCompatActivity {
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (20,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "9:15-10:45":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (21,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "11:00-12:30":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (22,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "12:45-14:15":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (23,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
 
                                         case "14:30-16:00":
                                             planDB.execSQL("INSERT OR REPLACE INTO zajecia (id,nazwa) " +
                                                     "VALUES (24,'"+dialogoweButtony()+"');");
                                             dialog.dismiss();
+                                            getDatabase();
                                             break;
                                     }
                                     break;
@@ -316,7 +353,7 @@ public class ManualPlan2 extends AppCompatActivity {
 
 
 
-    public void getDatabase(View view) {
+    public void getDatabase() {
         try {
             Cursor curosr = planDB.rawQuery("SELECT * from zajecia", null);
             int idColumn = curosr.getColumnIndex("id");
@@ -366,5 +403,44 @@ public class ManualPlan2 extends AppCompatActivity {
 
     public void deleteDatabase(View view) {
         this.deleteDatabase("PlanParzysty");
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        this.mDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    private class MyGestureListener implements GestureDetector.OnGestureListener {
+        @Override
+        public boolean onDown(MotionEvent e) {
+            return false;
+        }
+
+        @Override
+        public void onShowPress(MotionEvent e) {
+
+        }
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            return false;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            return false;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            startActivity(new Intent(ManualPlan2.this,ManualPlan.class));
+            return true;
+        }
     }
 }

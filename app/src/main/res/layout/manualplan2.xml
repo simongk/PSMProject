@@ -211,18 +211,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/usunBaze"
         android:onClick="deleteDatabase"
-        android:layout_above="@+id/pokazPlan"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pokaż plan"
-        android:id="@+id/pokazPlan"
-        android:onClick="getDatabase"
         android:layout_above="@+id/showd"
         android:layout_alignParentStart="true" />
-
 
 
 </RelativeLayout>
