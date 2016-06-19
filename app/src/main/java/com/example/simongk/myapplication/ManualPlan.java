@@ -1,5 +1,6 @@
 package com.example.simongk.myapplication;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -29,7 +30,7 @@ import org.w3c.dom.Text;
 
 import java.io.File;
 
-public class ManualPlan extends AppCompatActivity {
+public class ManualPlan extends Activity {
     public Spinner spinnerGodzinowy;
     public Dialog dialog;
     private GestureDetectorCompat mDetector;

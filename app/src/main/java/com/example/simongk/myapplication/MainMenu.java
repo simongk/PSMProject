@@ -1,5 +1,6 @@
 package com.example.simongk.myapplication;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,7 +17,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class MainMenu extends AppCompatActivity  {
+public class MainMenu extends Activity {
 
 
     @Override
@@ -66,6 +67,8 @@ public class MainMenu extends AppCompatActivity  {
         dialog.show();
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }

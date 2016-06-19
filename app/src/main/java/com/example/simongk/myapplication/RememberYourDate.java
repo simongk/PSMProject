@@ -1,5 +1,6 @@
 package com.example.simongk.myapplication;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import java.util.Calendar;
@@ -9,7 +10,7 @@ import android.widget.Toast;
 
 
 
-public class RememberYourDate extends AppCompatActivity {
+public class RememberYourDate extends Activity {
 
     private ScheduleClient scheduleClient;
     private DatePicker picker;
