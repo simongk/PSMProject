@@ -13,7 +13,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 /**
- * Created by simongk on 01.06.16.
+ *
  *
  * Service do obsłgi powiadomien
  */

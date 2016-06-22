@@ -9,7 +9,7 @@ import android.os.IBinder;
 import java.util.Calendar;
 
 /**
- * Created by simongk on 01.06.16.
+ *
  *
  * Pozwala na interakcje z Service kalendarza
  *

@@ -10,7 +10,7 @@ import android.util.Log;
 import java.util.Calendar;
 
 /**
- * Created by simongk on 01.06.16.
+ *
  * Service do obslugi kalendarza
  */
 public class ScheduleService extends Service{

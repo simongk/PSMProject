@@ -9,7 +9,9 @@ import android.widget.DatePicker;
 import android.widget.Toast;
 
 
-
+/*
+* Wybieranie daty do notyfikacji
+* */
 public class RememberYourDate extends Activity {
 
     private ScheduleClient scheduleClient;
