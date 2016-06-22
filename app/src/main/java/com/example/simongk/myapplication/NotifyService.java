@@ -14,6 +14,8 @@ import android.widget.RemoteViews;
 
 /**
  * Created by simongk on 01.06.16.
+ *
+ * Service do obsłgi powiadomien
  */
 public class NotifyService extends Service {
     @Nullable
@@ -30,27 +32,29 @@ public class NotifyService extends Service {
         }
     }
 
-    private static final int NOTIFICATION = 123;
     public static final String INTENT_NOTIFY ="com.example.simongk.myapplication.service.INTENT_NOTIFY";
     private NotificationManager mNM;
 
+    /**
+    * @return tworzy powiadomienie
+    * */
     @Override
     public void onCreate() {
-        Log.i("NotifyService","onCreate()");
         mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     }
-
+    /**
+    * funkcja gdy otrzyma intent to zaczyna funkcje showNotification
+    * */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i("LocalService", "Received start id " + startId + ": " + intent);
-
-        // If this service was started by out AlarmTask intent then we want to show our notification
         if(intent.getBooleanExtra(INTENT_NOTIFY, false))
             showNotification();
-
-        // We don't care if this service is stopped as we have already delivered our notification
         return START_NOT_STICKY;
     }
+
+    /**
+    * funkcja pokazujaca powiadomienie i zawierajaca informacje o nim
+    * */
     private void showNotification() {
         // This is the 'title' of the notification
         CharSequence title = "Masz coś do zrobienia!";
@@ -63,20 +67,15 @@ public class NotifyService extends Service {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, ToDoList.class), 0);
 
         Notification.Builder notification = new Notification.Builder(this);
-        notification.setAutoCancel(true);
+        notification.setAutoCancel(false);
         notification.setContentTitle(title);
         notification.setSmallIcon(icon);
         notification.setContentText(text);
         notification.setContentIntent(contentIntent);
         notification.build();
 
+        mNM.notify(11,notification.build());
 
-        Notification my = notification.getNotification();
-        mNM.notify(11,my);
-        // Send the notification to the system.
-
-
-        // Stop the service when we are finished
         stopSelf();
     }
 

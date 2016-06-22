@@ -7,39 +7,72 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.simongk.myapplication.MainMenu">
+    tools:context="com.example.simongk.myapplication.MainMenu"
+    android:background="@color/common_google_signin_btn_text_dark_default"
+    >
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zobacz plan online"
         android:id="@+id/schedulebtn"
-        android:layout_alignParentTop="true"
+        android:onClick="seeSchedule"
+        android:background="@color/accent_material_dark"
+        android:padding="10dp"
+        android:layout_below="@+id/imageView"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="seeSchedule"/>
+        android:layout_marginTop="33dp"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zobacz liste notatek"
+        android:text="Zobacz listę notatek"
         android:id="@+id/todobtn"
         android:onClick="seeToDo"
+        android:background="@color/accent_material_dark"
+        android:padding="10dp"
         android:layout_below="@+id/schedulebtn"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/schedulebtn" />
+        android:layout_marginTop="20dp"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Pomocnik Studenta WM PK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/imageView"
+        tools:textColor="@color/abc_input_method_navigation_guard"
+        android:fontFamily="@android:string/yes"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:src="@drawable/wm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        tools:background="@color/background_material_light" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zobacz liste zajec"
+        android:text="Zobacz listę zajęć"
         android:id="@+id/listazajecbtn"
+        android:onClick="seePlan"
+        android:background="@color/accent_material_dark"
+        android:padding="10dp"
         android:layout_below="@+id/todobtn"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/todobtn"
-        android:onClick="seePlan"/>
-
-
+        android:layout_marginTop="22dp"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

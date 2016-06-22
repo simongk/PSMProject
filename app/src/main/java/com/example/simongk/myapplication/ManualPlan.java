@@ -30,16 +30,21 @@ import org.w3c.dom.Text;
 
 import java.io.File;
 
+/**
+* Aktywnosc planu nieparzystego
+* */
+
 public class ManualPlan extends Activity {
     public Spinner spinnerGodzinowy;
     public Dialog dialog;
     private GestureDetectorCompat mDetector;
 
     SQLiteDatabase planDB;
-    Button stworzBaze,pokazPlan;
     TextView sp,sw,ss,sc,spt,dp,dw,ds,dc,dpt,jp,jw,js,jc,jpt,dwp,dww,dws,dwc,dwpt,cp,cw,cs,cc,cpt;
 
-
+    /**
+    * Funkcja, ktora pobiera tekst wprowadzanego zajecia
+    * */
     public String dialogoweButtony(){
         EditText nazwa = (EditText) dialog.findViewById(R.id.editText);
         RadioGroup rg = (RadioGroup) dialog.findViewById(R.id.rg);
@@ -52,6 +57,10 @@ public class ManualPlan extends Activity {
     }
 
 
+    /**
+    * Obsluga przyciskow w oknie dialogowym do wstawiania planu zajec
+    * Obsluga wstawiania danych do bazy danych SQLite
+    * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +68,6 @@ public class ManualPlan extends Activity {
         createDatabase();
 
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-
 
         sp = (TextView) findViewById(R.id.sp);
         dp = (TextView) findViewById(R.id.dp);
@@ -90,9 +98,6 @@ public class ManualPlan extends Activity {
         jpt = (TextView) findViewById(R.id.jpt);
         dwpt = (TextView) findViewById(R.id.dwpt);
         cpt  = (TextView) findViewById(R.id.cpt);
-
-        //okazPlan = (Button) findViewById(R.id.pokazPlan);
-
 
         Button b1 = (Button) findViewById(R.id.showd);
         getDatabase();
@@ -332,6 +337,9 @@ public class ManualPlan extends Activity {
         Intent i = getIntent();
     }
 
+    /**
+    * Funkcja tworząca baze danych SQLITE
+    * */
     public void createDatabase() {
         try{
 
@@ -351,12 +359,18 @@ public class ManualPlan extends Activity {
         }
     }
 
+    /*
+    * Przy wcisnieciu przycisku back wraca do menu glownego
+    * */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(ManualPlan.this,MainMenu.class));
     }
 
+    /**
+    * Wybiera dane z bazy i wstawia je do odpowiednich TextView
+    * */
    public void getDatabase() {
         try {
             Cursor curosr = planDB.rawQuery("SELECT * from zajecia", null);
@@ -405,10 +419,18 @@ public class ManualPlan extends Activity {
         }
     }
 
+    /**
+    * Obsluga zdarzenia wcisniecia przycisku Usun Plan z bazy
+    * usuwa baze danych
+    * */
     public void deleteDatabase(View view) {
         this.deleteDatabase("PlanNieparzysty");
     }
 
+
+    /**
+    * Przy wylaczeniu aplikacji zamyka baze danych
+    * */
     @Override
     protected void onDestroy() {
         planDB.close();
@@ -422,6 +444,11 @@ public class ManualPlan extends Activity {
         return super.onTouchEvent(event);
     }
 
+    /**
+    * Klasa do obslugi gestow
+    * Obsluguje gest Fling, dzieki ktoremu mozna przelaczac sie miedzy planem parzystym a nieparzystym
+    * za pomoca swipe
+    * */
     private class MyGestureListener implements GestureDetector.OnGestureListener {
         @Override
         public boolean onDown(MotionEvent e) {

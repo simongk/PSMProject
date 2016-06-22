@@ -16,10 +16,15 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+/**
+* Glowne menu aplikacji
+* */
 
 public class MainMenu extends Activity {
 
-
+    /**
+    * Tworzy aktywnosc i ustawia layout
+    * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +32,24 @@ public class MainMenu extends Activity {
 
     }
 
+    /**
+    * Otwiera aktywnosc zwiazana z planem online
+    * */
     public void seeSchedule(View view){
         startActivity(new Intent(MainMenu.this,WebPlan.class));
     }
 
+    /**
+    * Otwiera aktywnosc zwiazana z lista notatek
+    * */
     public void seeToDo(View view) {
         startActivity(new Intent(MainMenu.this, ToDoList.class));
     }
-
+    /**
+    * Otwiera aktywnosc zwiazana z planem, do którego uzytkownik sam wprowadza dane
+    * Po nacisnieciu otwiera sie okno dialogowe, gdzie uzytkownik musi wybrac plan parzysty lub nieparzysty
+    *
+    * */
     public void seePlan(View vie){
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.tygodnie);
@@ -63,10 +78,12 @@ public class MainMenu extends Activity {
             }
         });
 
-        //Toast.makeText(this,"Zaznacz coś!",Toast.LENGTH_SHORT).show();
         dialog.show();
     }
 
+    /**
+    * po nacisnieciu przycisku back aplkacja sie wylacza a nie wraca do poprzedniej aktywnosci
+    * */
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);

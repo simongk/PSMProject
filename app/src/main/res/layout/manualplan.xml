@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     >
 
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +17,8 @@
         android:id="@+id/rowNazwa"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp">
         <TextView
             android:id="@+id/tvNazwa"
             android:layout_width="match_parent"

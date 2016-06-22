@@ -16,6 +16,9 @@ public class RememberYourDate extends Activity {
     private DatePicker picker;
     public Calendar c = Calendar.getInstance();
 
+    /**
+    * wiaze kalendarz z klasa ustalajacą
+    * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +29,18 @@ public class RememberYourDate extends Activity {
         picker = (DatePicker) findViewById(R.id.scheduleTimePicker);
     }
 
+
+    /**
+    * wybieranie daty do notyfikacji
+    * */
     public void onDateSelectedButtonClick(View v){
-        //get date from date picker
+
         int day = picker.getDayOfMonth();
         int month = picker.getMonth();
         int year = picker.getYear();
 
 
-        //new calendar on chosen date
+
         c.set(year,month,day);
         c.set(Calendar.HOUR_OF_DAY,0);
         c.set(Calendar.MINUTE,0);

@@ -10,6 +10,9 @@ import java.util.Calendar;
 
 /**
  * Created by simongk on 01.06.16.
+ *
+ * Pozwala na interakcje z Service kalendarza
+ *
  */
 public class ScheduleClient {
     private ScheduleService mBoundService;
@@ -20,12 +23,11 @@ public class ScheduleClient {
         mContext=context;
     }
 
+
     public void doBindService() {
         mContext.bindService(new Intent(mContext,ScheduleService.class),mConnection,Context.BIND_AUTO_CREATE);
         misBound=true;
     }
-
-
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override

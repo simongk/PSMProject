@@ -10,11 +10,12 @@
     <application
         android:allowBackup="true"
         android:debuggable="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/wm"
         android:label="Pomocnik Studenta"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.DeviceDefault"
-        tools:ignore="HardcodedDebugMode">
+        android:theme="@android:style/Theme.Material.Light.NoActionBar.Overscan"
+        tools:ignore="HardcodedDebugMode"
+        tools:targetApi="lollipop">
         <activity android:name=".MainMenu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

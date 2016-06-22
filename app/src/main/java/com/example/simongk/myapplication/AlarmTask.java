@@ -9,6 +9,7 @@ import java.util.Calendar;
 
 /**
  * Created by simongk on 01.06.16.
+ * Service do notyfikacji
  */
 public class AlarmTask implements Runnable {
 

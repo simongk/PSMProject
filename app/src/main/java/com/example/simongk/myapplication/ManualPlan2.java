@@ -30,17 +30,23 @@ import org.w3c.dom.Text;
 
 import java.io.File;
 
+
+/**
+* Aktywnosc planu parzystego
+* */
 public class ManualPlan2 extends Activity {
     public Spinner spinnerGodzinowy;
     public Dialog dialog;
 
     SQLiteDatabase planDB;
-    Button stworzBaze,pokazPlan;
     TextView sp,sw,ss,sc,spt,dp,dw,ds,dc,dpt,jp,jw,js,jc,jpt,dwp,dww,dws,dwc,dwpt,cp,cw,cs,cc,cpt;
 
     private GestureDetectorCompat mDetector;
 
 
+    /**
+    * Funkcja, ktora pobiera tekst wprowadzanego zajecia
+    * */
     public String dialogoweButtony(){
         EditText nazwa = (EditText) dialog.findViewById(R.id.editText);
         RadioGroup rg = (RadioGroup) dialog.findViewById(R.id.rg);
@@ -52,12 +58,20 @@ public class ManualPlan2 extends Activity {
         return t01;
     }
 
+    /**
+    * Przy wcisnieciu przycisku back wraca do menu glownego
+    *
+    * */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(ManualPlan2.this,MainMenu.class));
     }
 
+    /**
+     * Obsluga przyciskow w oknie dialogowym do wstawiania planu zajec
+     * Obsluga wstawiania danych do bazy danych SQLite
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -332,7 +346,9 @@ public class ManualPlan2 extends Activity {
         });
         Intent i = getIntent();
     }
-
+    /**
+     * Funkcja tworząca baze danych SQLite
+     * */
     public void createDatabase() {
         try{
 
@@ -353,7 +369,9 @@ public class ManualPlan2 extends Activity {
     }
 
 
-
+    /**
+    * Wybiera dane z bazy i wstawia je do odpowiednich TextView
+    * */
     public void getDatabase() {
         try {
             Cursor curosr = planDB.rawQuery("SELECT * from zajecia", null);
@@ -401,10 +419,23 @@ public class ManualPlan2 extends Activity {
             Toast.makeText(this, "Coś się stanęło :(", Toast.LENGTH_SHORT).show();
         }
     }
-
+    /**
+    * Obsluga zdarzenia wcisniecia przycisku Usun Plan z bazy
+    * usuwa baze danych
+    * */
     public void deleteDatabase(View view) {
         this.deleteDatabase("PlanParzysty");
     }
+
+    /**
+    * Przy wylaczeniu aplikacji zamyka baze danych
+    * */
+    @Override
+    protected void onDestroy() {
+        planDB.close();
+        super.onDestroy();
+    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -412,6 +443,11 @@ public class ManualPlan2 extends Activity {
         return super.onTouchEvent(event);
     }
 
+    /**
+     * Klasa do obslugi gestow
+     * Obsluguje gest Fling, dzieki ktoremu mozna przelaczac sie miedzy planem parzystym a nieparzystym
+     * za pomoca swipe
+     * */
     private class MyGestureListener implements GestureDetector.OnGestureListener {
         @Override
         public boolean onDown(MotionEvent e) {
